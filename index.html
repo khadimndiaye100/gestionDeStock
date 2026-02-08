@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de Boutique</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Gestion de Boutique</h1>
+            <nav>
+                <button class="nav-btn active" data-section="stock">Stock</button>
+                <button class="nav-btn" data-section="commandes">Commandes</button>
+            </nav>
+        </header>
+
+        <main>
+            <section id="stock" class="section active">
+                <h2>Gestion du Stock</h2>
+                
+                <div class="card">
+                    <h3>Ajouter un Produit</h3>
+                    <form id="form-produit">
+                        <input type="text" id="nom-produit" placeholder="Nom du produit" required>
+                        <input type="number" id="prix-produit" placeholder="Prix (FCFA)" step="0.01" required>
+                        <input type="number" id="quantite-produit" placeholder="Quantité" required>
+                        <button type="submit">Ajouter</button>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <h3>Liste des Produits</h3>
+                    <div class="search-box">
+                        <input type="text" id="search-stock" placeholder="Rechercher un produit...">
+                    </div>
+                    <table id="table-stock">
+                        <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Prix (FCFA)</th>
+                                <th>Quantité</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-stock"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="commandes" class="section">
+                <h2>Gestion des Commandes</h2>
+                
+                <div class="card">
+                    <h3>Nouvelle Commande</h3>
+                    <form id="form-commande">
+                        <input type="text" id="nom-client" placeholder="Nom du client" required>
+                        <select id="produit-select" required>
+                            <option value="">Sélectionner un produit</option>
+                        </select>
+                        <input type="number" id="quantite-commande" placeholder="Quantité" min="1" required>
+                        <button type="submit">Ajouter au Panier</button>
+                    </form>
+
+                    <div id="panier-container">
+                        <h4>Panier</h4>
+                        <table id="table-panier">
+                            <thead>
+                                <tr>
+                                    <th>Produit</th>
+                                    <th>Prix unitaire</th>
+                                    <th>Quantité</th>
+                                    <th>Sous-total</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tbody-panier"></tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="3"><strong>Total</strong></td>
+                                    <td><strong id="total-panier">0 FCFA</strong></td>
+                                    <td></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <button id="btn-valider-commande" class="btn-success">Valider Commande</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h3>Historique des Commandes</h3>
+                    <div class="search-box">
+                        <input type="text" id="search-commandes" placeholder="Rechercher une commande...">
+                    </div>
+                    <table id="table-commandes">
+                        <thead>
+                            <tr>
+                                <th>N°</th>
+                                <th>Client</th>
+                                <th>Date</th>
+                                <th>Total (FCFA)</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-commandes"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+    <div id="modal-recu" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="recu-content"></div>
+            <button id="btn-imprimer" class="btn-success">Imprimer Reçu</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
